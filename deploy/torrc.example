@@ -1,0 +1,12 @@
+# Add to /etc/tor/torrc, then: sudo systemctl restart tor
+# Your address appears in /var/lib/tor/onion-chat/hostname.
+# Back up that directory: it holds the private key that IS your .onion address.
+
+HiddenServiceDir /var/lib/tor/onion-chat/
+HiddenServicePort 80 127.0.0.1:8080
+
+# Optional DoS hardening for onion services (Tor 0.4.8+).
+HiddenServiceEnableIntroDoSDefense 1
+HiddenServicePoWDefensesEnabled 1
+HiddenServiceMaxStreams 200
+HiddenServiceMaxStreamsCloseCircuit 1

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Onion Chat</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+<noscript><p class="noscript">Onion Chat encrypts messages in your browser, so it needs JavaScript. In Tor Browser, use the Standard or Safer security level.</p></noscript>
+
+<section id="join" class="join">
+  <div class="card">
+    <h1>Onion Chat</h1>
+    <p class="muted">Pick a name and talk to anyone online. No accounts, no database, no logs. Messages are end-to-end encrypted in your browser and disappear when you leave.</p>
+    <form id="join-form" class="row">
+      <input id="name" autocomplete="off" autocapitalize="off" spellcheck="false" minlength="3" maxlength="24" pattern="[A-Za-z0-9_\-]{3,24}" placeholder="username" required autofocus>
+      <button>Join</button>
+    </form>
+    <p id="join-err" class="err" role="alert"></p>
+  </div>
+</section>
+
+<section id="app" class="app" hidden>
+  <aside class="side">
+    <header class="side-head">
+      <span><i id="conn" class="dot" title="Connected"></i>You are <b id="me"></b></span>
+      <button id="wipe" class="danger" title="End every chat, forget everything and leave">Wipe</button>
+    </header>
+    <h2>Chats</h2>
+    <ul id="chats" class="list"></ul>
+    <h2>Online</h2>
+    <ul id="online" class="list"></ul>
+  </aside>
+
+  <section class="pane">
+    <div id="empty" class="empty">Pick someone from the online list to send a chat request.</div>
+    <div id="chat" class="chat" hidden>
+      <header class="chat-head">
+        <button id="back" class="icon" aria-label="Back to list">&larr;</button>
+        <div class="peer"><b id="peer"></b><span id="status" class="muted"></span></div>
+        <button id="verify" title="Show the safety code">Verify</button>
+        <button id="block"></button>
+        <button id="end" class="danger">End</button>
+      </header>
+      <div id="safety" class="safety" hidden></div>
+      <ol id="msgs" class="msgs" aria-live="polite"></ol>
+      <div id="prompt" class="prompt"></div>
+      <form id="composer" class="composer row">
+        <textarea id="text" rows="1" maxlength="4000" placeholder="Encrypted message" aria-label="Message"></textarea>
+        <button>Send</button>
+      </form>
+    </div>
+  </section>
+</section>
+
+<div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>
