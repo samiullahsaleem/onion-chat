@@ -10,6 +10,7 @@
 ![Size](https://img.shields.io/badge/binary-~6%20MB-6d4aff)
 ![E2E](https://img.shields.io/badge/encryption-ECDH%20%2B%20AES--256--GCM-1f9d55)
 ![Tor](https://img.shields.io/badge/runs%20on-.onion-7D4698?logo=torproject&logoColor=white)
+![License](https://img.shields.io/badge/license-Apache%202.0-blue)
 
 </div>
 
@@ -144,3 +145,7 @@ deploy/onion-chat.service     hardened systemd unit
 deploy/torrc.example          onion service config for a server
 docs/                         README images
 ```
+
+## 📄 License
+
+[Apache License 2.0](LICENSE). Copyright 2026 samiullahsaleem.
