@@ -1,0 +1,20 @@
+;; macOS sandbox for running onion-chat and tor from ./onion.sh.
+;; Both processes can read the project folder but nothing else in your home
+;; folder, and can write only to the project's .tor/ state folder.
+;; The app also gets no outbound network: it only answers on loopback.
+(version 1)
+(allow default)
+
+(deny file-read* file-write* (subpath (param "HOME")))
+(allow file-read* (subpath (param "PROJECT")))
+
+(deny file-write* (subpath "/"))
+(allow file-write* (subpath (param "STATE")) (literal "/dev/null") (literal "/dev/dtracehelper"))
+
+(deny process-fork)
+
+(if (equal? (param "ROLE") "app")
+  (begin
+    (deny network-outbound (remote ip "*:*"))
+    (deny network-bind)
+    (allow network-bind (local ip "localhost:*"))))

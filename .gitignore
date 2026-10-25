@@ -2,3 +2,4 @@
 /onion-chat-*
 *.exe
 .DS_Store
+.tor/
